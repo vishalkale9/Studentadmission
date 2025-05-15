@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-image: url('/1.jpg');background-size: cover;";>
+     <%- include('nav.ejs')%>
+        <br>
+        <h2 style="margin-left: 30px;">Update Course</h2>
+        
+        <form action="/updatcou/<%= data.cid %>" method="POST" style="margin-left: 30px;">
+            <div class="form-group">
+                
+                <input type="text" class="form-control" id="name" name="name" value="<%= data.cname %>" style="width:300px;border: 1px solid black;" required>
+            </div>
+           <br>
+             <div class="form-group">
+        <input type="submit" class="form-control" id="ns" value="update Student" style="width:300px; border: 1px solid black;background-image: linear-gradient(to right,rgba(255,0,0,0),rgb(17, 122, 126));">
+    </div> 
+        </form>
+</body>
+</html>

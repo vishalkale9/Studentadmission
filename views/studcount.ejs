@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     table.table {
+                background-image: linear-gradient(to right,rgba(255,0,0,0),rgb(17, 122, 126) );
+
+    }
+
+    table.table th,
+    table.table td {
+        background-color: transparent !important;
+        color: #000; 
+        text-align: center;
+    }
+
+    thead {
+        background-color: transparent !important;
+    }
+    </style>
+</head>
+<body>
+    <%- include('nav.ejs')%>
+    <br>
+     <form name="frm" action="/value2" method="post"  style="margin-left: 30px;">
+        <select name="scourse" style="width: 600px;">
+            <option value="">Select Course</option>
+            <% showdata1.forEach((item, index) => { %>
+                <option value="<%= item.cid %>"><%= item.cname %></option>
+            <% }) %>
+        </select>
+         <div class="form-group">
+            <input type="submit" class="form-control" id="ns" value="show list of student" style="width:600px; border: 1px solid black;margin-top:20px ;background-image: linear-gradient(to right,rgba(255,0,0,0),rgb(17, 122, 126));">
+        </div> 
+     </form>
+     <br>
+      <div class="container1" style="margin:40px 40px;">
+         <table class="table table-striped " >
+        <thead >
+            <tr >
+                <th>SrNo</th>
+                <th>Course</th>
+                <th>Student count</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+         <%
+                 if(select==0){ %>
+             <tr><td colspan="3"><h1>select course first</h1></td></tr>
+            <%
+                  } else if(data.length==0){
+            %>
+            <tr><td colspan="3"><h1>There is no data present in table</h1></td></tr>
+            <%
+           }
+           else{ 
+            %>
+            <%
+            data.forEach((item,index)=>{
+                
+            %>
+            <tr>
+                <td><%=(index+1)%></td>
+                <td><%=(item.cname)%></td>
+                <td><%=item.stdcount%></td>
+            </tr>
+            <%
+           })
+           %>
+       <% } %>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
